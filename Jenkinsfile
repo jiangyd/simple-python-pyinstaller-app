@@ -28,9 +28,14 @@ pipeline {
         }
         stage('Deliver') { 
             agent {
+                environment { 
+                VOLUME = '$(pwd):/src'
+                IMAGE = 'cdrx/pyinstaller-linux:python2'
+            }
+			
                 docker {
-                    image 'cdrx/pyinstaller-linux:python2' 
-                    args  '-v $(pwd):/src'
+                    image '${image}' 
+                    args  '-v ${VOLUME}'
                 }
             }
             steps {
