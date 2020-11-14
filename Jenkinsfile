@@ -34,14 +34,11 @@ pipeline {
             }
             steps {
                 dir(path: env.BUILD_ID) {
-                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'ls /src'"
-                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile sources/add2vals.py'"
+                    sh "docker run --rm -v ${VOLUME} ${IMAGE}"
                 }
             }
             post {
                 success {
-                    archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals"
-                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
                 }
             }
         }
