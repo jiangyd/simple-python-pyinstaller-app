@@ -27,17 +27,16 @@ pipeline {
             }
         }
         stage('Deliver') { 
-            agent {
+            agent any
                 environment { 
                 VOLUME = '$(pwd):/src'
                 IMAGE = 'cdrx/pyinstaller-linux:python2'
             }
 			
-                docker {
+           docker {
                     image '${image}' 
                     args  '-v ${VOLUME}'
                 }
-            }
             steps {
                 sh 'pyinstaller --onefile sources/add2vals.py'
             }
