@@ -1,4 +1,4 @@
-peline {
+pipeline {
     agent none
     stages {
         stage('Build') {
@@ -29,7 +29,7 @@ peline {
         stage('Deliver') { 
             agent {
                 docker {
-                    image 'cdrx/pyinstaller-linux:python2' 
+                    image 'cdrx/pyinstaller-linux:python' 
                 }
             }
             steps {
