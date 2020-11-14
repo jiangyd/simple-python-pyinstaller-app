@@ -37,9 +37,6 @@ pipeline {
                     sh "docker run --rm -v ${VOLUME} ${IMAGE}"
                 }
             }
-            post {
-                success {
-                }
             }
         }
     }
