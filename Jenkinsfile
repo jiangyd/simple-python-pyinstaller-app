@@ -35,10 +35,12 @@ pipeline {
             }
             steps {
                 sh '/root/.pyenv/shims/pyinstaller -F sources/add2vals.py' 
+                sh '/root/.pyenv/shims/pyinstaller -F sources/del2vals.py'
             }
             post {
                 success {
                     archiveArtifacts 'dist/add2vals' 
+                    archiveArtifacts 'dist/del2vals'
                 }
             }
         }

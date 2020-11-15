@@ -13,12 +13,17 @@ class TestCalc(unittest.TestCase):
         result = calc.add2(1, 2)
         self.assertEqual(result, 3)
 
+    def test_del_integers(self):
+        result = calc.del2(4,2)
+        self.assertEqual(result,2)
+
     def test_add_floats(self):
         """
         Test that the addition of two floats returns the correct result
         """
         result = calc.add2('10.5', 2)
         self.assertEqual(result, 12.5)
+
 
     def test_add_strings(self):
         """
@@ -27,6 +32,10 @@ class TestCalc(unittest.TestCase):
         """
         result = calc.add2('abc', 'def')
         self.assertEqual(result, 'abcdef')
+
+    def test_del_string(self):
+        result=calc.del2('a','b')
+        self.assertEqual(result, 0)
 
     def test_add_string_and_integer(self):
         """
